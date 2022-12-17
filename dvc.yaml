@@ -1,0 +1,19 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - data/MNIST
+    - train.py
+    params:
+    - params.yaml:
+    outs:
+    - model.pt:
+        checkpoint: true
+    metrics:
+    - dvclive/metrics.json:
+        cache: false
+        persist: true
+    plots:
+    - dvclive/plots:
+        cache: false
+        persist: true
